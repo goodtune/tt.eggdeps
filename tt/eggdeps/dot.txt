@@ -49,6 +49,40 @@ digraph {
 }
 
 
+File output
+-----------
+
+>>> from tt.eggdeps.dot import write_dot
+>>> write_dot(graph, Options())
+digraph {
+"anton" [style="filled", fillcolor="green", label="anton"]
+"berta" [style="filled", fillcolor="yellow", label="berta"]
+"dora" [label="dora"]
+"charlie" [style="filled", fillcolor="yellow", label="charlie"]
+"anton" -> "charlie"
+"anton" -> "berta"
+"berta" -> "charlie"
+"charlie" -> "dora" [color="lightgrey"]
+}
+
+>>> import tempfile
+>>> fp = tempfile.NamedTemporaryFile(prefix='write_dot-', suffix='.out',
+...                                  mode='w+')
+>>> write_dot(graph, Options(), fp)
+>>> fp.seek(0)
+>>> print fp.read()
+digraph {
+"anton" [style="filled", fillcolor="green", label="anton"]
+"berta" [style="filled", fillcolor="yellow", label="berta"]
+"dora" [label="dora"]
+"charlie" [style="filled", fillcolor="yellow", label="charlie"]
+"anton" -> "charlie"
+"anton" -> "berta"
+"berta" -> "charlie"
+"charlie" -> "dora" [color="lightgrey"]
+}
+
+
 Clustering root nodes and their direct dependencies
 ===================================================
 

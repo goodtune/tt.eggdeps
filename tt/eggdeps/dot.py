@@ -1,9 +1,11 @@
 # Copyright (c) 2007-2009 Thomas Lotze
 # See also LICENSE.txt
 
+import sys
 
-def print_dot(graph, options):
-    """Print a dependency graph to standard output as a dot input file.
+
+def write_dot(graph, options, fp=None):
+    """Print a dependency graph to a file-like object as a dot input file.
 
     graph: a tt.eggdeps.graph.Graph instance
 
@@ -14,16 +16,21 @@ def print_dot(graph, options):
         version_numbers: bool, print version numbers of active distributions?
 
         comment: str, optional, will be included at the top of the dot file
+
+    fp: a file-like object, defaults to standard output if None
     """
+    if fp is None:
+        fp = sys.stdout
+
     if hasattr(options, 'comment'):
         for line in options.comment.splitlines():
-            print '// ' + line
+            print >>fp, '// ' + line
 
     direct_deps = set()
     for name in graph.roots:
         direct_deps.update(graph[name])
 
-    print "digraph {"
+    print >>fp, "digraph {"
 
     for node in graph.itervalues():
         node_options = {}
@@ -44,14 +51,14 @@ def print_dot(graph, options):
         if not node.compatible:
             fill("red")
 
-        print '"%s"%s' % (node.name, format_options(node_options))
+        print >>fp, '"%s"%s' % (node.name, format_options(node_options))
 
     if options.cluster:
         for i, cluster in enumerate(yield_clusters(graph)):
-            print "subgraph cluster_%s {" % i
+            print >>fp, "subgraph cluster_%s {" % i
             for name in cluster:
-                print '"%s"' % name
-            print "}"
+                print >>fp, '"%s"' % name
+            print >>fp, "}"
 
     for node in graph.itervalues():
         for dep, extras in node.iter_deps():
@@ -59,10 +66,26 @@ def print_dot(graph, options):
             if extras:
                 edge_options["color"] = "lightgrey"
 
-            print '"%s" -> "%s"%s' % (node.name,
+            print >>fp, '"%s" -> "%s"%s' % (node.name,
                                       dep, format_options(edge_options))
 
-    print "}"
+    print >>fp, "}"
+
+
+def print_dot(graph, options):
+    """Print a dependency graph to standard output as a dot input file.
+
+    graph: a tt.eggdeps.graph.Graph instance
+
+    options: an object that provides formatting options as attributes
+
+        cluster: bool, cluster direct dependencies of each root distribution?
+
+        version_numbers: bool, print version numbers of active distributions?
+
+        comment: str, optional, will be included at the top of the dot file
+    """
+    return write_dot(graph, options)
 
 
 def format_options(options):
