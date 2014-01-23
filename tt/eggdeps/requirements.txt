@@ -11,7 +11,7 @@ arranging for one distribution to appear more than once in the graph:
 >>> charlie_1_4 = make_dist("charlie-1.4.egg")
 >>> ws = make_working_set(anton_1, berta_2, charlie_1_4)
 
->>> from tl.eggdeps.graph import Graph
+>>> from tt.eggdeps.graph import Graph
 >>> graph = Graph(working_set=ws)
 >>> graph.from_working_set()
 >>> sprint(graph)
@@ -23,7 +23,7 @@ arranging for one distribution to appear more than once in the graph:
 Unversioned requirements
 ========================
 
->>> from tl.eggdeps.requirements import print_list
+>>> from tt.eggdeps.requirements import print_list
 >>> print_list(graph, Options())
 ['anton', 'berta', 'charlie']
 

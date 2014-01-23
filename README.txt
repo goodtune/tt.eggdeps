@@ -1,5 +1,5 @@
 ==========
-tl.eggdeps
+tt.eggdeps
 ==========
 
 The ``eggdeps`` tool reports dependencies between eggs in the working set.

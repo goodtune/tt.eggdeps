@@ -9,7 +9,7 @@ from zope.testing.doctest import DocTestSuite, DocFileSuite
 import pkg_resources
 import setuptools.tests.test_resources
 
-import tl.eggdeps.requirements
+import tt.eggdeps.requirements
 
 
 def make_dist(filename, depends=""):
@@ -58,10 +58,10 @@ class Options(dict):
 
 def test_suite():
     return unittest.TestSuite([
-        DocTestSuite(tl.eggdeps.requirements)
+        DocTestSuite(tt.eggdeps.requirements)
         ] + [
         DocFileSuite(filename,
-                     package="tl.eggdeps",
+                     package="tt.eggdeps",
                      globs=dict(make_dist=make_dist,
                                 make_working_set=make_working_set,
                                 sprint=sprint,

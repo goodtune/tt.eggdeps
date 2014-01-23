@@ -5,10 +5,10 @@ Documented tests
 .. toctree::
     :maxdepth: 3
 
-    ../tl/eggdeps/graph
-    ../tl/eggdeps/plaintext
-    ../tl/eggdeps/dot
-    ../tl/eggdeps/requirements
+    ../tt/eggdeps/graph
+    ../tt/eggdeps/plaintext
+    ../tt/eggdeps/dot
+    ../tt/eggdeps/requirements
 
 
 .. Local Variables:

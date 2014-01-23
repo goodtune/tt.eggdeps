@@ -79,7 +79,7 @@ def find_mount_point(graph, mount_points, best_keys, path, sort_key):
 def print_graph(graph, options):
     """Print a dependency graph to standard output as plain text.
 
-    graph: a tl.eggdeps.graph.Graph instance
+    graph: a tt.eggdeps.graph.Graph instance
 
     options: an object that provides formatting options as attributes
 

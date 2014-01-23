@@ -1,24 +1,27 @@
 ================
-About tl.eggdeps
+About tt.eggdeps
 ================
 
-:Author:
+:Fork Maintainer:
+    `Gary Reynolds <gary@touch.asn.au>`_
+
+:Original Author:
     `Thomas Lotze <http://thomas-lotze.de/>`_ <thomas@thomas-lotze.de>
 
 :Web home:
     http://thomas-lotze.de/en/software/eggdeps/
 
 :Online documentation:
-    http://packages.python.org/tl.eggdeps/
+    https://github.com/goodtune/tt.eggdeps
 
 :PyPI page:
-    http://pypi.python.org/pypi/tl.eggdeps/
+    http://pypi.python.org/pypi/tt.eggdeps/
 
-:Subversion home:
-    https://svn.thomas-lotze.de/repos/public/tl.eggdeps/
+:Git home:
+    git@github.com:goodtune/tt.eggdeps.git
 
-:Subversion web view:
-    http://svn.thomas-lotze.de/tl.eggdeps/
+:Git web view:
+    https://github.com/goodtune/tt.eggdeps
 
 :Current change log:
     https://svn.thomas-lotze.de/repos/public/tl.eggdeps/trunk/CHANGES.txt

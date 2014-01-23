@@ -22,7 +22,7 @@ data_files = [("", [name for name in root_files
 
 entry_points = {
     "console_scripts": [
-    "eggdeps = tl.eggdeps.cli:eggdeps",
+    "eggdeps = tt.eggdeps.cli:eggdeps",
     ],
     }
 
@@ -49,7 +49,7 @@ classifiers = [
     "Topic :: Utilities",
     ]
 
-setup(name="tl.eggdeps",
+setup(name="tt.eggdeps",
       version="0.5dev",
       description=__doc__.strip(),
       long_description=longdesc,
@@ -66,7 +66,7 @@ setup(name="tl.eggdeps",
       tests_require=tests_require,
       include_package_data=True,
       data_files=data_files,
-      test_suite="tl.eggdeps.tests.test_suite",
-      namespace_packages=["tl"],
+      test_suite="tt.eggdeps.tests.test_suite",
+      namespace_packages=["tt"],
       zip_safe=False,
       )

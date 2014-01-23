@@ -8,10 +8,10 @@ Specifying the working set
 When a graph is instantiated without any working set given, it will use the
 global working set of active distributions defined by pkg_resources:
 
->>> from tl.eggdeps.graph import Graph
+>>> from tt.eggdeps.graph import Graph
 >>> graph = Graph()
 >>> sort_specs(graph.working_set)
-[...setuptools ... tl.eggdeps ... zope.testing ...]
+[...setuptools ... tt.eggdeps ... zope.testing ...]
 
 For testing the graph builder, we will use custom working sets and
 distributions. Using the convenience distribution factory defined by our test
@@ -117,7 +117,7 @@ to a graph upon instantiation and represent a distribution by its project
 name. The distribution is specified by an instance of either a Distribution or
 a Requirement:
 
->>> from tl.eggdeps.graph import Node
+>>> from tt.eggdeps.graph import Node
 >>> node = Node(graph, anton_1)
 >>> node.name
 'anton'

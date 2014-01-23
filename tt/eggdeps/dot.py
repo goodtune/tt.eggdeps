@@ -5,7 +5,7 @@
 def print_dot(graph, options):
     """Print a dependency graph to standard output as a dot input file.
 
-    graph: a tl.eggdeps.graph.Graph instance
+    graph: a tt.eggdeps.graph.Graph instance
 
     options: an object that provides formatting options as attributes
 

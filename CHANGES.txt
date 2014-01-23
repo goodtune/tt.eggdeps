@@ -1,9 +1,12 @@
 =========================
-Change log for tl.eggdeps
+Change log for tt.eggdeps
 =========================
 
 0.5 (unreleased)
 ================
+
+Organisation:
+  - updated namespace package
 
 
 0.4 (2009-07-12)

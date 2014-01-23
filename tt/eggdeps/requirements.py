@@ -9,7 +9,7 @@ import pkg_resources
 def print_list(graph, options):
     """Print a requirements list to standard output.
 
-    graph: a tl.eggdeps.graph.Graph instance
+    graph: a tt.eggdeps.graph.Graph instance
 
     options: an object that provides formatting options as attributes
 

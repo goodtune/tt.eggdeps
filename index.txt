@@ -1,4 +1,4 @@
-tl.eggdeps documentation contents
+tt.eggdeps documentation contents
 =================================
 
 .. toctree::

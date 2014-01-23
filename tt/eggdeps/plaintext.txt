@@ -17,7 +17,7 @@ arranging for one subtree to appear more than once in the graph:
 >>> emil_1 = make_dist("emil-1.egg")
 >>> ws = make_working_set(anton_1, berta_2, charlie_1_4, dora_0_5, emil_1)
 
->>> from tl.eggdeps.graph import Graph
+>>> from tt.eggdeps.graph import Graph
 >>> graph = Graph(working_set=ws)
 >>> graph.from_working_set()
 >>> sprint(graph)
@@ -38,7 +38,7 @@ dependency structure but include enough information to reconstruct the latter:
 they spell out recurring subtrees only once but print the subtree root
 distributions in all other places and add ellipses to hint at omissions.
 
->>> from tl.eggdeps.plaintext import print_graph
+>>> from tt.eggdeps.plaintext import print_graph
 >>> print_graph(graph, Options())
 anton
     berta

@@ -5,10 +5,10 @@ import optparse
 import re
 import sys
 
-import tl.eggdeps.graph
-import tl.eggdeps.dot
-import tl.eggdeps.requirements
-import tl.eggdeps.plaintext
+import tt.eggdeps.graph
+import tt.eggdeps.dot
+import tt.eggdeps.requirements
+import tt.eggdeps.plaintext
 
 
 def eggdeps(**defaults):
@@ -72,7 +72,7 @@ def eggdeps(**defaults):
     show = unmatcher(options.ignore, options.re_ignore)
     follow = unmatcher(options.dead_ends, options.re_dead_ends)
 
-    graph = tl.eggdeps.graph.Graph(show=show,
+    graph = tt.eggdeps.graph.Graph(show=show,
                                    follow=follow,
                                    extras=options.extras,
                                    )
@@ -88,9 +88,9 @@ def eggdeps(**defaults):
             '%s=%r' % item for item in sorted(defaults.iteritems()))
 
     formatter = {
-        "plaintext": tl.eggdeps.plaintext.print_graph,
-        "dot": tl.eggdeps.dot.print_dot,
-        "requirements": tl.eggdeps.requirements.print_list,
+        "plaintext": tt.eggdeps.plaintext.print_graph,
+        "dot": tt.eggdeps.dot.print_dot,
+        "requirements": tt.eggdeps.requirements.print_list,
         }[options.format]
     formatter(graph, options)
 

@@ -13,7 +13,7 @@ arranging for one subtree to appear more than once in the graph:
 >>> dora_0_5 = make_dist("dora-0.5.egg")
 >>> ws = make_working_set(anton_1, berta_2, charlie_1_4, dora_0_5)
 
->>> from tl.eggdeps.graph import Graph
+>>> from tt.eggdeps.graph import Graph
 >>> graph = Graph(working_set=ws)
 >>> graph.from_working_set()
 >>> sprint(graph)
@@ -26,7 +26,7 @@ arranging for one subtree to appear more than once in the graph:
 Plain graphs
 ============
 
->>> from tl.eggdeps.dot import print_dot
+>>> from tt.eggdeps.dot import print_dot
 >>> print_dot(graph, Options())
 digraph {
 "anton" [style="filled", fillcolor="green", label="anton"]
