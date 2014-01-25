@@ -10,6 +10,7 @@ import pkg_resources
 import setuptools.tests.test_resources
 
 import tt.eggdeps.requirements
+from tt.eggdeps.utils import Options
 
 
 def make_dist(filename, depends=""):
@@ -41,19 +42,6 @@ def sprint(value):
 
 def sort_specs(specs):
     return sorted(specs, cmp=lambda a, b: cmp(a.project_name, b.project_name))
-
-
-class Options(dict):
-
-    version_numbers = False
-    once = False
-    terse = False
-    cluster = False
-    version_specs = False
-
-    def __init__(self, *args, **kwargs):
-        self.__dict__ = self
-        super(Options, self).__init__(*args, **kwargs)
 
 
 def test_suite():
