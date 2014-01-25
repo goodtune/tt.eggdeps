@@ -34,8 +34,14 @@ tests_require = [
     "zope.testing",
     ]
 
+django_require = [
+    "django>=1.4.10",
+    "pygraphviz",
+]
+
 extras_require = {
     "test": tests_require,
+    "django": django_require,
     }
 
 classifiers = [
