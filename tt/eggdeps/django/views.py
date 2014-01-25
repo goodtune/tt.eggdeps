@@ -7,7 +7,9 @@ import pygraphviz
 
 from cStringIO import StringIO
 
+from django.contrib.sites.models import Site
 from django.http import HttpResponse
+from django.views.generic.base import View
 
 from tt.eggdeps.dot import write_dot
 from tt.eggdeps.graph import Graph
@@ -22,32 +24,43 @@ EXTENSION_MIME_MAP = {
 }
 
 
-# TODO move to class based views, much is common and we should extract that all out.
+class DigraphView(View):
 
-def digraph(request):
-    graph = Graph()
-    graph.from_working_set()
+    def get(self, request, *args, **kwargs):
+        graph = Graph()
+        graph.from_working_set()
+        response = self.get_response(graph, *args, **kwargs)
+        return response
 
-    fmt = 'dot'
-    response = HttpResponse(mimetype=EXTENSION_MIME_MAP[fmt])
+    def get_response(self, graph, fmt='dot', *args, **kwargs):
+        response = HttpResponse(mimetype=EXTENSION_MIME_MAP[fmt])
+        write_dot(graph, Options(), response)
+        return response
 
-    write_dot(graph, Options(), response)
-    return response
+
+class DigraphImageView(DigraphView):
+
+    shape= 'box'
+    width = 3.0
+
+    def get_response(self, graph, fmt='png', *args, **kwargs):
+        fp = StringIO()
+        write_dot(graph, Options(version_numbers=True), fp)
+        fp.reset()
+
+        site = Site.objects.get_current()
+        response = HttpResponse(mimetype=EXTENSION_MIME_MAP[fmt])
+
+        G = pygraphviz.AGraph(
+            name=site.name, directed=True,
+            rankdir='LR', rank='max', string=fp.read())
+
+        G.node_attr['shape'] = self.shape
+        G.node_attr['width'] = self.width
+        G.draw(path=response, format=fmt, prog="dot")
+
+        return response
 
 
-def digraph_image(request, fmt="png"):
-    graph = Graph()
-    graph.from_working_set()
-
-    s = StringIO()
-    write_dot(graph, Options(version_numbers=True), s)
-    s.reset()
-
-    response = HttpResponse(mimetype=EXTENSION_MIME_MAP[fmt])
-
-    G = pygraphviz.AGraph(name="xyz", directed=True, rankdir='LR', rank='max', string=s.read())
-    G.node_attr['shape'] = 'box3d'
-    G.node_attr['width'] = 3.0
-    G.draw(path=response, format=fmt, prog="dot")
-
-    return response
+digraph = DigraphView.as_view()
+digraph_image = DigraphImageView.as_view()
