@@ -33,7 +33,7 @@ class DigraphView(View):
         return response
 
     def get_response(self, graph, fmt='dot', *args, **kwargs):
-        response = HttpResponse(mimetype=EXTENSION_MIME_MAP[fmt])
+        response = HttpResponse(content_type=EXTENSION_MIME_MAP[fmt])
         write_dot(graph, Options(), response)
         return response
 
@@ -49,7 +49,7 @@ class DigraphImageView(DigraphView):
         fp.reset()
 
         site = Site.objects.get_current()
-        response = HttpResponse(mimetype=EXTENSION_MIME_MAP[fmt])
+        response = HttpResponse(content_type=EXTENSION_MIME_MAP[fmt])
 
         G = pygraphviz.AGraph(
             name=site.name, directed=True,
