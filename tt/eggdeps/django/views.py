@@ -34,7 +34,7 @@ class DigraphView(View):
 
     def get_response(self, graph, fmt='dot', *args, **kwargs):
         response = HttpResponse(content_type=EXTENSION_MIME_MAP[fmt])
-        write_dot(graph, Options(), response)
+        write_dot(graph, Options(version_numbers=True), response)
         return response
 
 
